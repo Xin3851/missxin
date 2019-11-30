@@ -1,0 +1,249 @@
+.pagewrap{
+	width: 100%;
+	position: relative;
+}
+/* Londing 动画 */
+#Londing {
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1000;
+}
+
+#Londing .sk-folding-cube {
+  margin: 20px auto;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  left: calc(50% - 30px);
+  top: calc(50% - 50px);
+  -webkit-transform: rotateZ(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotateZ(45deg);
+}
+
+#Londing .sk-folding-cube .sk-cube {
+  float: left;
+  width: 50%;
+  height: 50%;
+  position: relative;
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+#Londing .sk-folding-cube .sk-cube:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #172F4D;
+  -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
+  animation: sk-foldCubeAngle 2.4s infinite linear both;
+  -webkit-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+  transform-origin: 100% 100%;
+}
+
+#Londing .sk-folding-cube .sk-cube2 {
+  -webkit-transform: scale(1.1) rotateZ(90deg);
+  -ms-transform: scale(1.1) rotate(90deg);
+  transform: scale(1.1) rotateZ(90deg);
+}
+
+#Londing .sk-folding-cube .sk-cube3 {
+  -webkit-transform: scale(1.1) rotateZ(180deg);
+  -ms-transform: scale(1.1) rotate(180deg);
+  transform: scale(1.1) rotateZ(180deg);
+}
+
+#Londing .sk-folding-cube .sk-cube4 {
+  -webkit-transform: scale(1.1) rotateZ(270deg);
+  -ms-transform: scale(1.1) rotate(270deg);
+  transform: scale(1.1) rotateZ(270deg);
+}
+
+#Londing .sk-folding-cube .sk-cube2:before {
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+
+#Londing .sk-folding-cube .sk-cube3:before {
+  -webkit-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+}
+
+#Londing .sk-folding-cube .sk-cube4:before {
+  -webkit-animation-delay: 0.9s;
+  animation-delay: 0.9s;
+}
+
+@-webkit-keyframes sk-foldCubeAngle {
+  0%, 10% {
+    -webkit-transform: perspective(140px) rotateX(-180deg);
+    transform: perspective(140px) rotateX(-180deg);
+    opacity: 0;
+  }
+  25%, 75% {
+    -webkit-transform: perspective(140px) rotateX(0deg);
+    transform: perspective(140px) rotateX(0deg);
+    opacity: 1;
+  }
+  90%, 100% {
+    -webkit-transform: perspective(140px) rotateY(180deg);
+    transform: perspective(140px) rotateY(180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes sk-foldCubeAngle {
+  0%, 10% {
+    -webkit-transform: perspective(140px) rotateX(-180deg);
+    transform: perspective(140px) rotateX(-180deg);
+    opacity: 0;
+  }
+  25%, 75% {
+    -webkit-transform: perspective(140px) rotateX(0deg);
+    transform: perspective(140px) rotateX(0deg);
+    opacity: 1;
+  }
+  90%, 100% {
+    -webkit-transform: perspective(140px) rotateY(180deg);
+    transform: perspective(140px) rotateY(180deg);
+    opacity: 0;
+  }
+}
+
+/* 主要样式文件 sass编译 */
+
+/* 网站主颜色 */
+$main-color:#172F4D;
+
+/* 网站宽度 1200px */
+$main-width:1200px;
+
+/* 动画延迟效果 */
+$main-transition:all 0.3s ease;
+
+/* 影阴 */
+ $main-shadow:0px 2px 21px 0px rgba(35,24,21,0.29);
+
+/* 悬浮颜色*/
+ $main-hover:#4A628D;
+.webtop{
+	width:100%;
+	background: $main-color;
+	>ul{
+		width: $main-width;
+		margin: 0 auto;
+		height: 30px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		>li{
+			color: #fff;
+			height: 100%;
+			font-size: 0.14rem;
+			line-height: 30px;
+		}
+		li.webtop-wx{
+			position: relative;
+			.img-wrap{
+				display: none;
+				position: absolute;
+				top: -30px;
+				width: 150px;
+				background: #66ccff;
+				padding: 10px;
+				z-index: 9;
+				transition: $main-transition;
+				&:before{
+					content: '';
+					position: absolute;
+					top: -10px;
+					left: 41%;
+					display: inline-block;
+					width: 0px;
+					height: 0px;
+					border-top: 0px solid transparent;
+					border-right: 10px solid transparent;
+					border-bottom: 10px solid #000;
+					border-left: 10px solid transparent;
+				}
+			}
+			&:hover .img-wrap{
+				top: 40px;
+				display: block;
+			}
+		}
+	}
+}
+.webtopLogo{
+	width: 100%;
+	border-bottom: 1px solid #F0F0F0;
+	ul.webtop-info{
+		width: $main-width;
+		margin: 0 auto;
+		height: 74px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.webtopTel{
+		padding-left: 46px;
+		height: 36px;
+		line-height: 36px;
+		background: url(../images/icon1.png) 0 center no-repeat;
+		a{
+			color: $main-color;
+			font-size: 0.24rem;
+		}
+		span{
+			font-size: 0.20rem;
+			margin: 0 10px;
+			color: $main-color;
+		}
+	}
+}
+.webNav{
+	width:100%;
+	.navbar{
+		width: $main-width;
+		min-height: 40px;
+		margin: 0 auto;
+	}
+	.navbar-default{
+		background: #fff;
+		border:none;
+	}
+	.navbar-nav{
+		width: 100%;
+		display: flex;
+		height: 40px;
+		justify-content: space-around;
+		align-items: center;
+		>li>a{
+			padding-top: 5px;
+			padding-bottom: 5px;
+			font-size: 0.16rem;
+			color: #333;
+			font-weight: 700;
+			border-bottom: 1px solid transparent;
+		}
+		>li>a:hover{
+			border-bottom: 1px solid $main-color;
+			color: $main-color;
+		}
+	}
+	.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
+		color: $main-color;
+		background: transparent;
+		border-bottom: 1px solid $main-color;
+	}
+}
+.webBanner{
+	width: 100%;
+}

@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-
+      测试数据
   </div>
 </template>
 
@@ -10,7 +10,7 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-
+        
     }
   }
 }

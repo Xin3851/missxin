@@ -1,0 +1,86 @@
+/* 样式重置 */
+body {
+	-webkit-text-size-adjust:none
+}
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td,iframe {
+	margin:0;
+	padding:0
+}
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%
+}
+body,button,input,select,textarea {
+	line-height:1.5
+}
+ol,ul{
+	list-style:none
+}
+a{
+    text-decoration: none;
+    color: #333;
+}
+a:focus, a:hover{
+	text-decoration: none;
+	transition: all ease 0.3s;
+}
+img{
+	transition: all 0.5s ease;
+}
+html{
+	font-size: 62.5%;
+}
+body{
+	font-size: 12px;
+	font-size: 0.12rem;
+}
+
+/* 自定义工具 */
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.overflow{
+	overflow: hidden;
+}
+.clear{
+    clear: both;
+}
+.no-p{
+	padding: 0 !important;
+}
+.no-m{
+	margin: 0 !important;
+}
+.flex{
+	width: 100%;
+	display: flex;
+}
+.img-wrap img{
+	width: auto;
+	max-width: 100%;
+}
+
+/*  框架修改  */
+.swiper-container {
+	width: 100%;
+	height: 100%;
+}
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
