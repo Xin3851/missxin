@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="../lib/vue.js"></script>
+	<script src="../lib/vue-router.js"></script>
+</head>
+<body>
+	<div id="app">
+	</div>
+	<script>
+		var App = {
+			template:`
+				<div>
+					<router-link to="/home">首页</router-link>
+					<router-link to="/pins">费电</router-link>
+					<keep-alive>
+						<router-view></router-view>
+					</keep-alive>
+				</div>	
+			`,
+		}
+		var Home = {
+			template:`
+				<div>
+					<h2 @click="">我是首页模板</h2>
+				</div>
+			`,
+			created(){
+				console.log('首页组件创建')
+			},
+			mounted(){
+				console.log('首页组件加载了')
+			},
+			destroyed(){
+				console.log('首页组件被销毁了')
+			}
+		}
+		var Pins = {
+			template:`
+				<h2 @click="clickHeader">我是费电模板</h2>
+			`,
+			methods:{
+				clickHeader(e){
+					console.log(e)
+					e.target.style.color = 'red';
+				}
+			},
+			created(){
+				console.log('费电组件创建')
+			},
+			mounted(){
+				console.log('费电组件加载了')
+			},
+			destroyed(){
+				console.log('费电组件被销毁了')
+			}
+		}
+		var router = new VueRouter({
+			routes:[
+				{
+					path:'/home',
+					component:Home,
+				},
+				{
+					path:'/pins',
+					component:Pins,
+				}
+			]
+		})
+		new Vue({
+			el:'#app',
+			router:router,
+			template:'<App/>',
+			components:{
+				App
+			}
+			
+		})
+		
+	</script>
+</body>
+</html>

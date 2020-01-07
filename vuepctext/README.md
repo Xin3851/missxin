@@ -30,9 +30,14 @@ npm run build --report
 ##### js
    -- jquery.waypoints.min.js [鼠标监听插件]
    -- jquery.countTo.js [数字插件]
-   
 
-   
+##### 项目中使用jquery，bootstrap
+##### 使用element-ui
+
+
+
+
+
 
 
 

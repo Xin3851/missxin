@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="../lib/vue.js"></script>
+	<script src="../lib/vue-router.js"></script>
+</head>
+<body>
+	<div id="app">
+	</div>
+	<script>
+		var App = {
+			template:`
+				<div>
+					<router-link to="/home">首页</router-link>
+					<router-link to="/pins">费电</router-link>
+					<router-view></router-view>
+				</div>	
+			`
+		}
+		var ComDes = {
+			data(){
+				return{
+					msg:''
+				}
+			},
+			template:`
+				<div>
+					我是{{msg}}
+				</div>	
+			`,
+			created(){
+				console.log(123);
+				// 复用组件，对路由参数做出相应，watch监听$route对象
+				this.msg = '测试1'
+			},
+			watch:{
+				'$route'(to,from){
+					console.log(to)
+					console.log(from)
+					this.msg = to.params.id
+				}
+			}
+			
+		}
+		var Home = {
+			template:`
+				<div>
+					<router-link :to="{name:'comdes',params:{id:'text1'}}">测试一</router-link>
+					<router-link :to="{name:'comdes',params:{id:'text2'}}">测试二</router-link>
+					<router-view></router-view>
+				</div>
+			`
+		}
+		var Pins = {
+			template:`
+				<div>费电</div>
+			`
+		}
+		var router = new VueRouter({
+			routes:[
+				{
+					path:'/home',
+					component:Home,
+					children:[
+						{
+							name:'comdes',
+							path:'/home/:id',					// 动态路由参数，冒号:开头
+							component:ComDes
+						}
+					]
+				},
+				{
+					path:'/pins',
+					component:Pins,
+				}
+			]
+		})
+		new Vue({
+			el:'#app',
+			router:router,
+			template:'<App/>',
+			components:{
+				App
+			}
+			
+		})
+		
+	</script>
+</body>
+</html>

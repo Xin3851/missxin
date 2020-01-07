@@ -2,13 +2,12 @@
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
+const webpack = require('webpack')
 const vueLoaderConfig = require('./vue-loader.conf')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
-
-
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
@@ -22,6 +21,12 @@ module.exports = {
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+        jQuery: 'jquery',
+        $: 'jquery'
+    })
+  ],
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {

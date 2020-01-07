@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="../lib/vue.js"></script>
+	<script src="../lib/vue-router.js"></script>
+</head>
+<body>
+	<div id="app">
+	</div>
+	<script>
+		var App = {
+			template:`
+				<div>
+					<router-link to="/home">首页</router-link>
+					<router-link to="/pins">有权限的内容</router-link>
+					<router-link to="/login">获取权限</router-link>
+					<router-view></router-view>
+				</div>	
+			`,
+		}
+		var Home = {
+			template:`
+				<div>
+					<h2>我是首页模板</h2>
+				</div>
+			`,
+		}
+		var Login = {
+			template:`
+				<div>
+					<input type="text" name="userN">
+					<input type="password" name="psw">
+					<input type="button" name="login" value="登录">
+				</div>	
+			`
+		}
+		var Pins = {
+			template:`
+				<h2>有权限的内容，需要登录才能看</h2>
+			`,
+			methods:{
+				
+			},
+		}
+		var router = new VueRouter({
+			routes:[
+				{
+					path:'/',
+					redirect:'/home',			// 重定向到首页
+				},
+				{
+					path:'/home',
+					component:Home,
+				},
+				{
+					path:'/pins',
+					component:Pins,
+					meta:{						// 给未来路由做权限控制
+						auth:true,				// 用户需要登录，用户已经登录
+					}
+				},
+				{
+					path:'/login',
+					component:Login,
+				},
+				
+			]
+		})
+		router.beforeEach((to, from, next) => {
+		  console.log(to)
+		  console.log(from)
+		})
+		new Vue({
+			el:'#app',
+			router:router,
+			template:'<App/>',
+			components:{
+				App
+			}
+			
+		})
+		
+	</script>
+</body>
+</html>
